@@ -3,16 +3,17 @@ import Button from './Button';
 
 export default function FormAddFriend({ setFriends, formIsOpen }) {
   const [friendsName, setFriendsName] = useState('');
-  const [imageURL, setImageURL] = useState('');
+  const [imageURL, setImageURL] = useState('https://i.pravatar.cc/48');
 
   function formHandler(e) {
     e.preventDefault();
 
     const newPerson = {
-      id: Math.random(),
+      // id: Math.random(),
+      id: crypto.randomUUID(),
       name: friendsName,
       image: imageURL,
-      balance: 2000,
+      balance: 0,
     };
 
     setFriends((prev) => [...prev, newPerson]);
@@ -20,7 +21,7 @@ export default function FormAddFriend({ setFriends, formIsOpen }) {
   }
 
   return (
-    <form className='form-add-friend'>
+    <form className='form-add-friend' onSubmit={formHandler}>
       <label>friend name</label>
       <input
         type='text'
@@ -38,7 +39,8 @@ export default function FormAddFriend({ setFriends, formIsOpen }) {
         }}
       />
 
-      <Button click={formHandler}>Add</Button>
+      {/* <Button click={formHandler}>Add</Button> */}
+      <Button>Add</Button>
     </form>
   );
 }
