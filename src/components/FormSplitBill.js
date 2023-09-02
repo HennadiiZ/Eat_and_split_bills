@@ -21,7 +21,6 @@ export default function FormSplitBill({ selectedFriend }) {
         type='text'
         value={billValue}
         onChange={(e) => {
-          console.log(billValue);
           setBillValue(e.target.value);
         }}
       />

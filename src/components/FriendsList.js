@@ -6,12 +6,9 @@ export default function FriendsList({
   selectedFriend,
   setSelectedFriend,
 }) {
-  //   const [selectedFriend, setSelectedFriend] = useState(null);
-
   function selectAfriendHandler(id) {
     initialFriends.filter((friend) => {
       if (friend.id === id) {
-        // console.log(friend);
         setSelectedFriend(friend);
       }
     });
