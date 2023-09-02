@@ -24,7 +24,8 @@ export default function FormAddFriend({ setFriends, formIsOpen }) {
     };
 
     setFriends((prev) => [...prev, newPerson]);
-    formIsOpen((prev) => !prev);
+    // formIsOpen((prev) => !prev);
+    formIsOpen(false);
 
     setFriendsName('');
     setImageURL('https://i.pravatar.cc/48');

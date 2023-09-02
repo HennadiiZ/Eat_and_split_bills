@@ -30,13 +30,25 @@ export default function App() {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [friends, setFriends] = useState(initialFriends);
 
-  console.log(friends);
+  const [selectedFriend, setSelectedFriend] = useState(null);
+
+  // function selectAfriend(id) {
+  //   friends.filter((friend) => {
+  //     if (friend.id === id) {
+  //       setSelectedFriend(friend);
+  //     }
+  //   });
+  // }
 
   return (
     <div className='app'>
       <div className='sidebar'>
         {/* <FriendsList initialFriends={initialFriends} /> */}
-        <FriendsList initialFriends={friends} />
+        <FriendsList
+          initialFriends={friends}
+          selectedFriend={selectedFriend}
+          setSelectedFriend={setSelectedFriend}
+        />
         {isOpenForm && (
           <FormAddFriend setFriends={setFriends} formIsOpen={setIsOpenForm} />
         )}
@@ -44,7 +56,7 @@ export default function App() {
           {isOpenForm ? 'Close' : 'Add Friend'}
         </Button>
       </div>
-      <FormSplitBill />
+      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
     </div>
   );
 }
