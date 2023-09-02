@@ -8,16 +8,26 @@ export default function FormAddFriend({ setFriends, formIsOpen }) {
   function formHandler(e) {
     e.preventDefault();
 
+    if (!friendsName || !imageURL) {
+      return;
+    }
+
+    const id = crypto.randomUUID();
     const newPerson = {
       // id: Math.random(),
-      id: crypto.randomUUID(),
+      // id: crypto.randomUUID(),
+      id,
       name: friendsName,
-      image: imageURL,
+      // image: imageURL,
+      image: `${imageURL}?=${id}`,
       balance: 0,
     };
 
     setFriends((prev) => [...prev, newPerson]);
     formIsOpen((prev) => !prev);
+
+    setFriendsName('');
+    setImageURL('https://i.pravatar.cc/48');
   }
 
   return (
