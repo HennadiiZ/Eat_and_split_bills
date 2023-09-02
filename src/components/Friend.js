@@ -4,7 +4,7 @@ export default function Friend({ item, selectedFriend, selectAfriendHandler }) {
   const isSelected = selectedFriend?.id === item?.id;
 
   return (
-    <li>
+    <li className={isSelected ? 'selected' : ''}>
       <img src={item.image} alt={item.name}></img>
       <h3>{item.name}</h3>
 
