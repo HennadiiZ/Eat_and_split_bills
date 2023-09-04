@@ -11,9 +11,9 @@ export default function App() {
 
   const [selectedFriend, setSelectedFriend] = useState(null);
 
-  const [splitBill, setSplitBill] = useState(null);
+  // const [splitBill, setSplitBill] = useState(null);
 
-  console.log(splitBill);
+  // console.log(splitBill);
 
   return (
     <div className='app'>
@@ -33,7 +33,8 @@ export default function App() {
       </div>
       {selectedFriend && (
         <FormSplitBill
-          setSplitBill={setSplitBill}
+          friends={friends}
+          setFriends={setFriends}
           selectedFriend={selectedFriend}
         />
       )}

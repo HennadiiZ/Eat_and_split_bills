@@ -1,31 +1,44 @@
 import { useState } from 'react';
 import Button from './Button';
 
-export default function FormSplitBill({ selectedFriend, setSplitBill }) {
+export default function FormSplitBill({ selectedFriend, friends, setFriends }) {
   const [billValue, setBillValue] = useState('');
   const [yourExpenses, setYourExpenses] = useState('');
   // const [friendExpenses, setFriendExpenses] = useState(''); //
   const paidByFriend = billValue ? billValue - yourExpenses : '';
   const [paysBill, setPaysBill] = useState('user');
 
+  // function formHandler(e) {
+  //   e.preventDefault();
+
+  //   if (!billValue || !yourExpenses) {
+  //     return;
+  //   }
+  // }
+
   function formHandler(e) {
     e.preventDefault();
 
-    // const whoPaysBillData = {
-    //   billValue,
-    //   yourExpenses,
-    //   paidByFriend, //
-    //   paysBill,
-    // };
+    if (!billValue || !yourExpenses || !selectedFriend) {
+      return;
+    }
 
-    const whoPaysBillData = {
-      paidByFriend, //
-      paysBill,
-    };
+    const updatedFriends = friends.map((friend) => {
+      if (friend.id === selectedFriend.id) {
+        return {
+          ...friend,
+          balance: friend.balance + parseFloat(paidByFriend), // Assuming paidByFriend is a number
+        };
+      } else {
+        return friend;
+      }
+    });
 
-    setSplitBill(paidByFriend);
-    console.log('whoPaysBillData', whoPaysBillData);
-    // console.log('paidByFriend', paidByFriend);
+    // Now, update the 'friends' state with the new array of friends
+    setFriends(updatedFriends);
+
+    // Reset form fields or perform any other necessary actions
+    // Example: setPaidByFriend('');
   }
 
   return (
