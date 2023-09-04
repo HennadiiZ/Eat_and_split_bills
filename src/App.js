@@ -6,10 +6,14 @@ import Button from './components/Button';
 import FormSplitBill from './components/FormSplitBill';
 
 export default function App() {
-  const [isOpenForm, setIsOpenForm] = useState(false); //setShowAddFriend(false)
+  const [isOpenForm, setIsOpenForm] = useState(false);
   const [friends, setFriends] = useState(initialFriends);
 
   const [selectedFriend, setSelectedFriend] = useState(null);
+
+  const [splitBill, setSplitBill] = useState(null);
+
+  console.log(splitBill);
 
   return (
     <div className='app'>
@@ -27,7 +31,12 @@ export default function App() {
           {isOpenForm ? 'Close' : 'Add Friend'}
         </Button>
       </div>
-      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+      {selectedFriend && (
+        <FormSplitBill
+          setSplitBill={setSplitBill}
+          selectedFriend={selectedFriend}
+        />
+      )}
     </div>
   );
 }
