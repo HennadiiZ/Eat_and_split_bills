@@ -4,6 +4,7 @@ export default function FriendsList({
   initialFriends,
   selectedFriend,
   setSelectedFriend,
+  setIsOpenForm, //-!
 }) {
   function selectAfriendHandler(id) {
     // initialFriends.filter((friend) => {
@@ -11,6 +12,7 @@ export default function FriendsList({
     //     setSelectedFriend(friend);
     //   }
     // });
+
     if (selectedFriend && selectedFriend.id === id) {
       setSelectedFriend(null); // Deselect the current friend
     } else {
@@ -19,6 +21,9 @@ export default function FriendsList({
         setSelectedFriend(selected);
       }
     }
+    // setShowAddFriend(false)
+    setIsOpenForm(false);
+    // setSelectedFriend((cur) => (cur?.id === id ? null : id));
   }
 
   return (

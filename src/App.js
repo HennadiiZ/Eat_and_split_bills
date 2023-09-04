@@ -6,7 +6,7 @@ import Button from './components/Button';
 import FormSplitBill from './components/FormSplitBill';
 
 export default function App() {
-  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false); //setShowAddFriend(false)
   const [friends, setFriends] = useState(initialFriends);
 
   const [selectedFriend, setSelectedFriend] = useState(null);
@@ -18,6 +18,7 @@ export default function App() {
           initialFriends={friends}
           selectedFriend={selectedFriend}
           setSelectedFriend={setSelectedFriend}
+          setIsOpenForm={setIsOpenForm} //-!
         />
         {isOpenForm && (
           <FormAddFriend setFriends={setFriends} formIsOpen={setIsOpenForm} />
