@@ -11,9 +11,45 @@ export default function App() {
 
   const [selectedFriend, setSelectedFriend] = useState(null);
 
-  // const [splitBill, setSplitBill] = useState(null);
+  function handleSplitBill(value) {
+    console.log(value);
 
-  // console.log(splitBill);
+    // const updatedFriends = friends.map((friend) => {
+    //   if (friend.id === selectedFriend.id) {
+    //     return {
+    //       ...friend,
+    //       balance: parseFloat(value),
+    //     };
+    //   } else {
+    //     return friend;
+    //   }
+    // });
+    // setFriends(updatedFriends);
+
+    // const updatedFriends = friends.map((friend) => {
+    //   if (friend.id === selectedFriend.id) {
+    //     return {
+    //       ...friend,
+    //       balance: parseFloat(value),
+    //     };
+    //   } else {
+    //     return friend;
+    //   }
+    // });
+
+    setFriends((friends) =>
+      friends.map((friend) => {
+        if (friend.id === selectedFriend.id) {
+          return {
+            ...friend,
+            balance: parseFloat(value),
+          };
+        } else {
+          return friend;
+        }
+      })
+    );
+  }
 
   return (
     <div className='app'>
@@ -36,6 +72,7 @@ export default function App() {
           friends={friends}
           setFriends={setFriends}
           selectedFriend={selectedFriend}
+          onSplitBill={handleSplitBill}
         />
       )}
     </div>
